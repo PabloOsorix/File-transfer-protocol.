@@ -30,6 +30,7 @@ The client command interface show you the following commands to use to communica
 | `USRS` |  List all users registerd on the server hub. |
 | `CHNS` |  List all channels registered on the server hub. |
 | `CHNS_FILE` <#CHANNELNAME> | List all files linked to a given channel. |
+| `QUIT` | find the execution of program, it means that exit from the server. |
 
 
 Examples of use:
@@ -96,4 +97,8 @@ To list all files registered on a certain channel.
 ```
 CHNS_FILE #GENERAL
 receipst.txt
+```
+Finish the execution
+```
+QUIT
 ```
