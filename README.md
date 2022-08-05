@@ -21,13 +21,13 @@ go run .
 The client command interface show you the following commands to use to communicate with the server
 | Command | Description |
 | --- | --- |
-| `REG` <@USERNAME> | List all *new or modified* files |
-| `JOIN` <#CHANNELNAME> | Show file differences that **haven't been** staged |
-| `LEAVE` <#CHANNELNAME> |
-| `D_FILE` <nameOfFile> |
-| `S_FILE` <nameOfFile> -> <#CHANNELNAME> |
-| `L_FILES`|
-| `USRS` |
-| `CHNS` |
-| `CHNS_FILE` <#CHANNELNAME> |
+| `REG` <@USERNAME> | Registers you in the server hub. |
+| `JOIN` <#CHANNELNAME> | Use to join an existing channel in the server hub. |
+| `LEAVE` <#CHANNELNAME> | Use it to leave from a channel you signed up for before. |
+| `D_FILE` <nameOfFile> | Download a file from the server. |
+| `S_FILE` <nameOfFile> -> <#CHANNELNAME> | Send a file to an user or channel. |
+| `L_FILES`|  List all files existing on the server. |
+| `USRS` |  List all users registerd on the server hub. |
+| `CHNS` |  List all channels registered on the server hub. |
+| `CHNS_FILE` <#CHANNELNAME> | List all files linked to a given channel. |
 
