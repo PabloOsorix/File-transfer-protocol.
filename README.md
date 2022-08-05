@@ -34,17 +34,19 @@ The client command interface show you the following commands to use to communica
 
 Examples of use:
 
+To send files you need to register
 ```
 REG @NEW USER
 OK, successfully register
 ```
-  
+To join a channel.
 ```
 JOIN #GENERAL
 User was registered in new channel
 or user was registered in existing channel.
 ```
 
+To leave from a channel
 ```
 LEAVE #GENERAL
 You leave of #GENERAL channel
@@ -72,23 +74,25 @@ In the side of the server it print:
 sending file completed 
 File was received and shared in #GENERAL
 ```
-  
+
+To list all files from server
 ```
 L_FILES
 
 -client.txt -receipst.txt -testfile.txt -wakein.txt -wakeup.txt
 ```
-  
+
+To list all users on the server
 ```
 USRS
 @NEW_USER, @TAYLOR, @DUCK
 ```
-
+To list all channels on the server.
 ```
 CHNS
 #GENERAL, #B3, #ANIME, #PROGRAMMING
 ```
-  
+To list all files registered on a certain channel.
 ```
 CHNS_FILE #GENERAL
 recepipst.txt
