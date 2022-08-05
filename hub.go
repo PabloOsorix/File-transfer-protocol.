@@ -133,7 +133,7 @@ func (h *hub) leaveChannel(user string, chann string) {
 	if client, ok := h.clients[user]; ok {
 		if channel, ok := h.channels[chann]; ok {
 			delete(channel.participants, client)
-			resp := "You leave of " + channel.name + " channel"
+			resp := "You leave of " + channel.name + " channel\n"
 			client.conn.Write([]byte(resp))
 			return
 		}
