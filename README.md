@@ -31,3 +31,65 @@ The client command interface show you the following commands to use to communica
 | `CHNS` |  List all channels registered on the server hub. |
 | `CHNS_FILE` <#CHANNELNAME> | List all files linked to a given channel. |
 
+
+Examples of use:
+
+```
+REG @NEW USER
+OK, successfully register
+```
+  
+```
+JOIN #GENERAL
+User was registered in new channel
+or user was registered in existing channel.
+```
+
+```
+LEAVE #GENERAL
+You leave of #GENERAL channel
+```
+
+You have to use L_FILES to know what files are in the server and use the name to download it.
+```
+D_FILE <name of the file iin the server> text.txt
+```
+
+NOTE: right arrow is mandatory.
+```
+S_FILE context.txt -> #GENERAL or (@name of user registered).
+
+Receiving file...
+
+Write directory of the file:
+./
+
+file was received and created
+```
+
+In the side of the server it print:
+```
+sending file completed 
+File was received and shared in #GENERAL
+```
+  
+```
+L_FILES
+
+-client.txt -receipst.txt -testfile.txt -wakein.txt -wakeup.txt
+```
+  
+```
+USRS
+@NEW_USER, @TAYLOR, @DUCK
+```
+
+```
+CHNS
+#GENERAL, #B3, #ANIME, #PROGRAMMING
+```
+  
+```
+CHNS_FILE #GENERAL
+recepipst.txt
+```
