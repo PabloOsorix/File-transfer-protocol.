@@ -98,7 +98,8 @@ To list all files registered on a certain channel.
 CHNS_FILE #GENERAL
 receipst.txt
 ```
-Finish the execution
+Finish the session
 ```
 QUIT
+You close the session!
 ```
