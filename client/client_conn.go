@@ -24,7 +24,7 @@ Notices: @ in Username and # in channelname are mandatory.
     USRS
     CHNS
     CHNS_FILE <#CHANNELNAME>
-	QUIT
+    QUIT
 `
 
 func main() {
