@@ -24,6 +24,7 @@ Notices: @ in Username and # in channelname are mandatory.
     USRS
     CHNS
     CHNS_FILE <#CHANNELNAME>
+	QUIT
 `
 
 func main() {
@@ -174,7 +175,7 @@ func read(ch chan []byte, eCh chan error, fileName chan string,
 		default:
 			ch <- data
 		}
-
+		//ch <- data
 	}
 }
 
@@ -183,6 +184,6 @@ func read(ch chan []byte, eCh chan error, fileName chan string,
 //	(chan []byte) ch - channel with the information coming from server.
 func response(ch chan []byte) {
 	for {
-		fmt.Print(string(<-ch) + "\n")
+		fmt.Print(string(<-ch))
 	}
 }
