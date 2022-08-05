@@ -95,5 +95,5 @@ CHNS
 To list all files registered on a certain channel.
 ```
 CHNS_FILE #GENERAL
-recepipst.txt
+receipst.txt
 ```
