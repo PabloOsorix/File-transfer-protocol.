@@ -1,6 +1,6 @@
 # File transfer protocol
 
-Protocol that allow us join a channels to send and receive files, also you can send files directly to an user if it's registered in the hub.
+Protocol that allow us join a channels to send and receive files, also you can send files directly to an user if it's registered in the server hub.
 
 You can execute the server with the following command in the main directory:
 
