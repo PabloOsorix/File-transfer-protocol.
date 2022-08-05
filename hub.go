@@ -71,7 +71,7 @@ func (h *hub) run() {
 			case CHNS_FILE:
 				h.listChannelFiles(cmd.sender, cmd.channel)
 			default:
-				log.Fatal("Command not found")
+				log.Fatal("Command not found\n")
 			}
 		}
 	}
@@ -121,7 +121,7 @@ func (h *hub) joinChannel(user string, chann string) {
 		}
 		client.conn.Write([]byte("User was registered in new channel\n"))
 	} else {
-		fmt.Printf("User not found joinchannel(HUB)")
+		fmt.Printf("User not found joinchannel(HUB)\n")
 		//client.conn.Write([]byte("user not found"))
 	}
 }
@@ -171,8 +171,8 @@ func (h *hub) sendFile(user string, dest string, fileName string, file []byte) {
 				h.files[new_file.name] = new_file
 				createFile(fileName, file)
 				channel.broadchast(sender.username, new_file.name)
-				sender.conn.Write([]byte("file was received and created"))
-				fmt.Printf("File was received and shared in %v", channel.name)
+				sender.conn.Write([]byte("file was received and created\n"))
+				fmt.Printf("File was received and shared in %v\n", channel.name)
 			} else {
 				sender.conn.Write([]byte("Channel not found\n"))
 				return
@@ -210,11 +210,8 @@ func (h *hub) downFile(user string, fileName string) {
 			n, err := file.Read(buf)
 			if err != nil {
 				if err == io.EOF {
-					fmt.Printf("sending file completed \n")
-					//client.conn.Write([]byte("File will be send!\n"))
+					fmt.Printf("sending file completed\n")
 					client.conn.Write(buf[:n])
-					//time.Sleep(5 * time.Second)
-					//client.conn.Write([]byte("Server: File was send successful!"))
 					return
 				} else {
 					fmt.Printf("%v", err)
@@ -233,7 +230,7 @@ func (h *hub) listChannels(user string) {
 		var channels []string
 
 		if len(h.channels) == 0 {
-			client.conn.Write([]byte("ERR no channels found"))
+			client.conn.Write([]byte("ERR no channels found\n"))
 			return
 		}
 
@@ -251,7 +248,7 @@ func (h *hub) listFiles(user string) {
 	if client, ok := h.clients[user]; ok {
 		var files []string
 		if len(h.files) == 0 {
-			client.conn.Write([]byte("ERR no files found"))
+			client.conn.Write([]byte("ERR no files found\n"))
 			return
 		}
 		for fil := range h.files {
@@ -268,7 +265,7 @@ func (h *hub) listUsers(user string) {
 	if client, ok := h.clients[user]; ok {
 		var users []string
 		if len(h.clients) == 1 {
-			client.conn.Write([]byte("ERR no users found"))
+			client.conn.Write([]byte("ERR no users found\n"))
 			return
 		}
 		for userName := range h.clients {
