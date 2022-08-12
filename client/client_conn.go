@@ -15,16 +15,16 @@ Notices: @ in Username and # in channelname are mandatory.
   -> in command S_FILE is mandatory.
 
   COMMANDS:
-    REG <@USERNAME>
-    JOIN <#CHANNELNAME>
-    LEAVE <#CHANNELNAME>
-    D_FILE <nameOfFile>
-    S_FILE <nameOfFile> -> <#CHANNELNAME>
-    L_FILES
-    USRS
-    CHNS
-    CHNS_FILE <#CHANNELNAME>
-    QUIT
+    REG: <@USERNAME>
+    JOIN: <#CHANNELNAME>
+    LEAVE: <#CHANNELNAME>
+    D_FILE: <nameOfFile>
+    S_FILE: <nameOfFile> -> <#CHANNELNAME>
+    L_FILES:
+    USRS:
+    CHNS:
+    CHNS_FILE: <#CHANNELNAME>
+    QUIT:
 `
 
 func main() {
@@ -45,12 +45,18 @@ func main() {
 	fmt.Print(manual)
 
 	for {
+		if eCh {
+
+		}
+
 		//go readFile(ch, connection)
 		reader := bufio.NewReader(os.Stdin)
+		time.Sleep(1 * time.Second)
 		fmt.Print("Enter your command: \n\n")
 		input, _ := reader.ReadString('\n')
-		cmd, info, _ := strings.Cut(input, " ")
-
+		cmd, info, _ := strings.Cut(input, ":")
+		cmd = strings.ToUpper(cmd)
+		info = strings.TrimSpace(info)
 		switch cmd {
 		case "QUIT":
 			fmt.Print("You close the session!\n")
@@ -62,7 +68,7 @@ func main() {
 				fmt.Printf("Error: username must begin with @\n")
 				continue
 			}
-			connection.Write([]byte(input))
+			connection.Write([]byte(cmd + " " + info + "\n"))
 		case "JOIN":
 			if info == "" {
 				fmt.Printf("Error: you have to entry a channel!\n")
@@ -73,7 +79,7 @@ func main() {
 				fmt.Printf("Error: channel name must begin with '#'\n")
 				continue
 			}
-			connection.Write([]byte(input))
+			connection.Write([]byte(cmd + " " + info + "\n"))
 		case "LEAVE":
 			if info == "" {
 				fmt.Printf("Error: you have to entry a channel!\n")
@@ -83,12 +89,12 @@ func main() {
 			if msg[0] != '#' {
 				fmt.Printf("Error: channel name must begin with '#'\n")
 			}
-			connection.Write([]byte(input))
+			connection.Write([]byte(cmd + " " + info + "\n"))
 		case "S_FILE":
 			fileName, channel, _ := strings.Cut(info, " -> ")
 			ch := []byte(channel)
 			if ch[0] == '#' || ch[0] == '@' {
-				connection.Write([]byte(input))
+				connection.Write([]byte(cmd + " " + info + "\n"))
 				time.Sleep(5 * time.Second)
 				sendFile(fileName, connection)
 				continue
@@ -96,19 +102,19 @@ func main() {
 			fmt.Printf("Error: channel name must begin with '#'\nand user name must begin with '@'")
 			continue
 		case "L_FILES":
-			connection.Write([]byte(input))
+			connection.Write([]byte(cmd + "\n"))
 		case "D_FILE":
 			if info == "" {
 				fmt.Printf("Error: Name of file is mandatory!\n")
 				continue
 			}
-			connection.Write([]byte(input))
+			connection.Write([]byte(cmd + " " + info + "\n"))
 			fileName <- info
 			continue
 		case "USRS":
-			connection.Write([]byte(input))
+			connection.Write([]byte(cmd + "\n"))
 		case "CHNS":
-			connection.Write([]byte(input))
+			connection.Write([]byte(cmd + "\n"))
 		case "CHNS_FILE":
 			if info == "" {
 				fmt.Printf("Error: Name of channel is mandatory!\n")
@@ -118,7 +124,7 @@ func main() {
 				fmt.Printf("Error: channel name must begin with '#'\n")
 				continue
 			}
-			connection.Write([]byte(input))
+			connection.Write([]byte(cmd + " " + info + "\n"))
 		case "\n":
 			continue
 		default:
