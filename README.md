@@ -100,6 +100,6 @@ receipst.txt
 ```
 Finish the session
 ```
-QUIT
+QUIT:
 You close the session!
 ```
