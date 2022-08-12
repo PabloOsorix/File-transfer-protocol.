@@ -143,7 +143,7 @@ func (h *hub) leaveChannel(user string, chann string) {
 
 // The hub use addFile when user wants to add a new file in a specific channel.
 // 	(string) user - user name who sends the new file.
-//	(string) chann - channel name which the file will be send.
+//	(string) dest - channel name which the file will be send.
 //	(string) fileName - file name of the send file.
 //	([]byte) file - content of the file to add a channel.
 func (h *hub) sendFile(user string, dest string, fileName string, file []byte) {
